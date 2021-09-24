@@ -1,0 +1,152 @@
+﻿[
+  {
+    "id": "affbc12a-4f1b-435d-9937-dda28860a260",
+    "parentId": null,
+    "partitionKey": "Entry",
+    "who": "joe",
+    "when": "2021-09-24T10:48:12.999817+00:00",
+    "what": "insert",
+    "currentEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Text",
+      "value": "Jhon Smith"
+    },
+    "oldEntity": null,
+    "ip": "127.0.0.1",
+    "computerName": "HP-127",
+    "ticketNumber": "10001123",
+    "_ts": "1632402850",
+    "timeStamp": "2021-09-23T13:14:10+00:00"
+  },
+  {
+    "id": "5fd5ce0e-4277-4f47-870f-9bd696ce150d",
+    "parentId": null,
+    "partitionKey": "Entry",
+    "who": "joe",
+    "when": "2021-09-24T10:48:12.999817+00:00",
+    "what": "update",
+    "currentEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Text",
+      "value": "Jhon X Smith"
+    },
+    "oldEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Text",
+      "value": "Jhon Smith"
+    },
+    "ip": "127.0.0.1",
+    "computerName": "HP-127",
+    "ticketNumber": "10001123",
+    "_ts": "1632402883",
+    "timeStamp": "2021-09-23T13:14:43+00:00"
+  },
+  {
+    "id": "7e4d31b6-ebaa-4348-9eca-ad39c3d36665",
+    "parentId": null,
+    "partitionKey": "Entry",
+    "who": "joe",
+    "when": "2021-09-24T10:48:12.999817+00:00",
+    "what": "delete",
+    "currentEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Text",
+      "value": "Jhon X Smith"
+    },
+    "oldEntity": null,
+    "ip": "127.0.0.1",
+    "computerName": "HP-127",
+    "ticketNumber": "10001123",
+    "_ts": "1632402908",
+    "timeStamp": "2021-09-23T13:15:08+00:00"
+  },
+  {
+    "id": "db9344e2-099d-4dfe-875c-f4963ea3143b",
+    "parentId": null,
+    "partitionKey": "Entry",
+    "who": "joe",
+    "when": "2021-09-24T10:48:12.999817+00:00",
+    "what": "insert",
+    "currentEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Json",
+      "value": "{ \"id\" : \"123\", \"name\" : \"jhon\" }"
+    },
+    "oldEntity": null,
+    "ip": "127.0.0.1",
+    "computerName": "HP-127",
+    "ticketNumber": "10001123",
+    "_ts": "1632403090",
+    "timeStamp": "2021-09-23T13:18:10+00:00"
+  },
+  {
+    "id": "0709395f-04ac-43ea-8716-2271514b8a61",
+    "parentId": null,
+    "partitionKey": "Entry",
+    "who": "joe",
+    "when": "2021-09-24T10:48:12.999817+00:00",
+    "what": "update",
+    "currentEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Json",
+      "value": "{ \"id\" : \"123\", \"name\" : \"jhon\" }"
+    },
+    "oldEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Json",
+      "value": "{ \"id\" : \"123\", \"name\" : \"json X\" }"
+    },
+    "ip": "127.0.0.1",
+    "computerName": "HP-127",
+    "ticketNumber": "10001123",
+    "_ts": "1632403129",
+    "timeStamp": "2021-09-23T13:18:49+00:00"
+  },
+  {
+    "id": "6a217902-0853-42b7-b822-e4011da902d5",
+    "parentId": null,
+    "partitionKey": "Entry",
+    "who": "joe",
+    "when": "2021-09-24T10:48:12.999817+00:00",
+    "what": "delete",
+    "currentEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Json",
+      "value": "{ \"id\" : \"123\", \"name\" : \"jhon\" }"
+    },
+    "oldEntity": null,
+    "ip": "127.0.0.1",
+    "computerName": "HP-127",
+    "ticketNumber": "10001123",
+    "_ts": "1632403154",
+    "timeStamp": "2021-09-23T13:19:14+00:00"
+  },
+  {
+    "id": "6891b93b-53cc-4827-93ae-01f9008c801b",
+    "parentId": null,
+    "partitionKey": "Entry",
+    "who": "joe",
+    "when": "2021-09-24T10:48:12.999817+00:00",
+    "what": "insert",
+    "currentEntity": {
+      "id": "123",
+      "name": "Customer",
+      "dataType": "Json",
+      "value": "{ \"id\" : \"123\", \"name\" : \"jhon\" }"
+    },
+    "oldEntity": null,
+    "ip": "127.0.0.1",
+    "computerName": "HP-127",
+    "ticketNumber": "10001123",
+    "_ts": "1632431295",
+    "timeStamp": "2021-09-23T21:08:15+00:00"
+  }
+]

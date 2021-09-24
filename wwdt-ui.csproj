@@ -11,10 +11,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\healtcheck.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wwwroot\healtcheck.html" />
-  </ItemGroup>
 </Project>
