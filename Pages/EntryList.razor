@@ -1,0 +1,46 @@
+﻿@page "/entrylist"
+
+@using wwdt_ui.Data
+@inject EntryService EntryService
+
+<h1>Entry</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (entries == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Who</th>
+                <th>When</th>
+                <th>What</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in entries)
+            {
+                <tr>
+                    <td>@entry.Id</td>
+                    <td>@entry.Who</td>
+                    <td>@entry.When</td>
+                    <td>@entry.What</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Entry[] entries;
+
+    protected override async Task OnInitializedAsync()
+    {
+        entries = await EntryService.GetEntryAsync();
+    }
+}
