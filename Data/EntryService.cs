@@ -21,7 +21,7 @@ namespace wwdt_ui.Data
 
         public Task<Entry[]> GetEntryAsync()
         {
-            var apiUrl = _config.GetValue<string>("ApiUrl");
+            var apiUrl = _config.GetValue<string>("ApiUrl") + "Select?code=Pp4leohUDQIcLGSnswf6z2/iatVCHOdoAGPOez5K8r/7PEbyF3al2A==&who=joe";
             string json = string.Empty;
 
             if (_env.IsDevelopment())
@@ -43,7 +43,7 @@ namespace wwdt_ui.Data
 
         public Task<Entry> GetEntryByIdAsync(string id)
         {
-            var apiUrl = "http://localhost:7071/api/SelectById?code=&id=" + id;
+            var apiUrl = _config.GetValue<string>("ApiUrl") + "SelectById?code=&id=" + id;
             string json = string.Empty;
 
             json = new WebClient().DownloadString(apiUrl);
