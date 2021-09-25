@@ -43,7 +43,7 @@ namespace wwdt_ui.Data
 
         public Task<Entry> GetEntryByIdAsync(string id)
         {
-            var apiUrl = _config.GetValue<string>("ApiUrl") + "SelectById?code=&id=" + id;
+            var apiUrl = _config.GetValue<string>("ApiUrl") + "SelectById?code=Pp4leohUDQIcLGSnswf6z2/iatVCHOdoAGPOez5K8r/7PEbyF3al2A==&id=" + id;
             string json = string.Empty;
 
             json = new WebClient().DownloadString(apiUrl);
