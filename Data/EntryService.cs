@@ -40,5 +40,17 @@ namespace wwdt_ui.Data
 
             return Task.FromResult(entryList.ToArray());
         }
+
+        public Task<Entry> GetEntryByIdAsync(string id)
+        {
+            var apiUrl = "http://localhost:7071/api/SelectById?code=&id=" + id;
+            string json = string.Empty;
+
+            json = new WebClient().DownloadString(apiUrl);
+
+            Entry entryList = JsonConvert.DeserializeObject<Entry>(json);
+
+            return Task.FromResult(entryList);
+        }
     }
 }
