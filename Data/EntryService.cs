@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System;
 
 namespace wwdt_ui.Data
 {
@@ -12,19 +15,24 @@ namespace wwdt_ui.Data
     {
         private IConfigurationRoot _config;
         private IWebHostEnvironment _env;
+        private readonly string apiUrl = string.Empty;
+        private readonly string code = string.Empty;
 
         public EntryService(IConfiguration config, IWebHostEnvironment env)
         {
             _config = (IConfigurationRoot)config;
             _env = env;
+            apiUrl = _config.GetValue<string>("ApiUrl");
+            code = _config.GetValue<string>("code");
         }
 
         public Task<Entry[]> GetEntryAsync()
         {
-            var apiUrl = _config.GetValue<string>("ApiUrl") + "Select?code=Pp4leohUDQIcLGSnswf6z2/iatVCHOdoAGPOez5K8r/7PEbyF3al2A==&who=joe";
+            var address = $"{apiUrl}Select?code={code}&who=joe";
+
             string json = string.Empty;
 
-            if (_env.IsDevelopment())
+            if (_env.IsDevelopment() && false)
             {
                 string dataFolder = System.IO.Path.Combine(_env.ContentRootPath, "Data");
                 string dummyFile = System.IO.Path.Combine(dataFolder, "DummyEntry.json");
@@ -32,25 +40,36 @@ namespace wwdt_ui.Data
             }
             else
             {
-                json = new WebClient().DownloadString(apiUrl);
+                json = new WebClient().DownloadString(address);
             }
 
-
             List<Entry> entryList = JsonConvert.DeserializeObject<List<Entry>>(json);
-
             return Task.FromResult(entryList.ToArray());
         }
 
         public Task<Entry> GetEntryByIdAsync(string id)
         {
-            var apiUrl = _config.GetValue<string>("ApiUrl") + "SelectById?code=Pp4leohUDQIcLGSnswf6z2/iatVCHOdoAGPOez5K8r/7PEbyF3al2A==&id=" + id;
-            string json = string.Empty;
-
-            json = new WebClient().DownloadString(apiUrl);
-
+            var address = $"{apiUrl}SelectById?code={code}&id={id}";
+            string json = new WebClient().DownloadString(address);
             Entry entryList = JsonConvert.DeserializeObject<Entry>(json);
-
             return Task.FromResult(entryList);
+        }
+
+        public Task<bool> DeleteEntryById(string id)
+        {
+            var address = $"{apiUrl}Delete?code={code}&id={id}";
+            Entry entry = new Entry() { Id = id };                 
+
+            HttpClient httpClient = new HttpClient();
+            HttpRequestMessage request = new HttpRequestMessage
+            {
+                Content = JsonContent.Create(entry),
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri(address, UriKind.Absolute)
+            };
+
+            HttpResponseMessage response = httpClient.Send(request);
+            return Task.FromResult<bool>(response.IsSuccessStatusCode);
         }
     }
 }

@@ -1,0 +1,31 @@
+@using wwdt_ui.Data
+@inject EntryService EntryService
+
+<div>
+
+    <p>@Id</p>
+
+    <p>@entry.Who</p>
+
+    <p>@entry.When</p>
+
+    <p>@entry.What</p>
+
+    <p>@entry.Ip</p>
+
+    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-secondary">Cancel</button>
+</div>
+
+@code {
+
+    [Parameter] public string Id { get; set; }
+
+    private Entry entry;
+
+    protected override async void OnParametersSet()
+    {
+        entry = await EntryService.GetEntryByIdAsync(Id);
+    }
+
+}

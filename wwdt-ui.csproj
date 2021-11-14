@@ -7,13 +7,8 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'wwdt-ui' " />
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Blazored.Modal" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Blazored.Modal" />
   </ItemGroup>
   
 </Project>
