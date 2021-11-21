@@ -55,6 +55,22 @@ namespace wwdt_ui.Data
             return Task.FromResult(entryList);
         }
 
+        public Task<bool> UpdateEntryAsync(Entry entry)
+        {
+            var address = $"{apiUrl}Update?code={code}";
+
+            HttpClient httpClient = new HttpClient();
+            HttpRequestMessage request = new HttpRequestMessage
+            {
+                Content = JsonContent.Create(entry),
+                Method = HttpMethod.Put,
+                RequestUri = new Uri(address, UriKind.Absolute)
+            };
+
+            HttpResponseMessage response = httpClient.Send(request);
+            return Task.FromResult<bool>(response.IsSuccessStatusCode);
+        }
+
         public Task<bool> DeleteEntryById(string id)
         {
             var address = $"{apiUrl}Delete?code={code}&id={id}";

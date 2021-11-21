@@ -1,31 +1,52 @@
+@page "/entryview"
+
 @using wwdt_ui.Data
 @inject EntryService EntryService
+@using Microsoft.AspNetCore.WebUtilities;
+@using Microsoft.Extensions.Primitives;
+@inject NavigationManager navManager
 
-<div>
 
-    <p>@Id</p>
+<EditForm Model="@entry" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
-    <p>@entry.Who</p>
+    <div>@entry.Id</div>
 
-    <p>@entry.When</p>
+    <div>@entry.Who</div>
 
-    <p>@entry.What</p>
+    <div><InputText id="what" @bind-Value="entry.What" /></div>
 
-    <p>@entry.Ip</p>
+    <div><InputDate id="when" @bind-Value="entry.When" /> </div>
 
-    <button class="btn btn-primary">Submit</button>
-    <button class="btn btn-secondary">Cancel</button>
-</div>
+    <div>@entry.When</div>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+
 
 @code {
 
-    [Parameter] public string Id { get; set; }
-
     private Entry entry;
 
-    protected override async void OnParametersSet()
+    protected override async Task OnInitializedAsync()
     {
-        entry = await EntryService.GetEntryByIdAsync(Id);
+        StringValues Id;
+        var uri = navManager.ToAbsoluteUri(navManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("Id", out Id))
+        {
+            entry = await EntryService.GetEntryByIdAsync(Id);
+        }
+
     }
 
+    private void HandleValidSubmit()
+    {
+        Task<bool> result = EntryService.UpdateEntryAsync(entry);
+        if(result.Result)
+        {
+            navManager.NavigateTo("/entrylist");
+        }
+    }
 }
